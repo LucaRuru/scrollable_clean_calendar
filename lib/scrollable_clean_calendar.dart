@@ -147,14 +147,14 @@ class _ScrollableCleanCalendarState extends State<ScrollableCleanCalendar> {
   Widget listViewCalendar() {
     return ListView.separated(
       controller: widget.scrollController,
+      scrollDirection: Axis.horizontal, // Ändern der Scrollrichtung
       padding: widget.padding ??
           const EdgeInsets.symmetric(horizontal: 16, vertical: 32),
       separatorBuilder: (_, __) =>
-          SizedBox(height: widget.spaceBetweenCalendars),
+          SizedBox(width: widget.spaceBetweenCalendars), // Abstand horizontal
       itemCount: widget.calendarController.months.length,
       itemBuilder: (context, index) {
         final month = widget.calendarController.months[index];
-
         return childCollumn(month);
       },
     );
@@ -163,14 +163,14 @@ class _ScrollableCleanCalendarState extends State<ScrollableCleanCalendar> {
   Widget scrollablePositionedListCalendar() {
     return ScrollablePositionedList.separated(
       itemScrollController: widget.calendarController.itemScrollController,
+      scrollDirection: Axis.horizontal, // Ändern der Scrollrichtung
       padding: widget.padding ??
           const EdgeInsets.symmetric(horizontal: 16, vertical: 32),
       separatorBuilder: (_, __) =>
-          SizedBox(height: widget.spaceBetweenCalendars),
+          SizedBox(width: widget.spaceBetweenCalendars), // Abstand horizontal
       itemCount: widget.calendarController.months.length,
       itemBuilder: (context, index) {
         final month = widget.calendarController.months[index];
-
         return childCollumn(month);
       },
     );
